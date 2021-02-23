@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ch02_di" />
+        <module name="ch10_mybatis_dynamic_sql" />
+        <module name="ch04_aop_aspectj" />
+        <module name="ch09_mybatis_dao" />
+        <module name="ch01" />
+        <module name="ch07_spring_trans_anno" />
+        <module name="ch06_spring_trans" />
+        <module name="ch08_spring_trans_aspectj" />
+        <module name="ch05_spring_mybatis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ch01" target="1.8" />
+      <module name="ch02_di" target="1.8" />
+      <module name="ch02_di_anno" target="1.5" />
+      <module name="ch04_aop_aspectj" target="1.8" />
+      <module name="ch05_spring_mybatis" target="1.8" />
+      <module name="ch06_spring_trans" target="1.8" />
+      <module name="ch07_spring_trans_anno" target="1.8" />
+      <module name="ch08_spring_trans_aspectj" target="1.8" />
+      <module name="ch09_mybatis_dao" target="1.8" />
+      <module name="ch10_mybatis_dynamic_sql" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

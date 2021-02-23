@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--set注入-->
+    <!--
+    <bean id="myStudent" class="beans.Student">
+        <property name="name" value="stu001"/>
+        <property name="age" value="26"/>
+        引用类型-->
+    <!--
+        <property name="school" ref="mySchool"/>
+    </bean>
+
+    <bean id="mySchool" class="beans.School">
+        <property name="name" value="#####"/>
+        <property name="address" value="$$$$$$"/>
+    </bean>
+    -->
+
+    <!--构造注入，在创建对象同时，在构造方法中给属性赋值-->
+    <bean id="myStudent" class="beans.Student">
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="age" value="24"/>
+        <constructor-arg name="school" ref="mySchool"/>
+    </bean>
+    <bean id="mySchool" class="beans.School">
+        <property name="name" value="#####"/>
+        <property name="address" value="$$$$$$"/>
+    </bean>
+
+    <bean id="myStu" class="beans.Student">
+        <constructor-arg index="0" value="李四"/>
+        <constructor-arg index="1" value="12"/>
+        <constructor-arg index="2" ref="mySchool"/>
+    </bean>
+
+</beans>

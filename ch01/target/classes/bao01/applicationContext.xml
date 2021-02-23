@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--引用类型自动注入：spring框架根据某些规则可以给引用类型赋值-->
+    <bean id="myStudent" class="org.example.Services.bao01.Student" autowire="byName">
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="age" value="24"/>
+        <!--<constructor-arg name="school" ref="mySchool"/>-->
+    </bean>
+    <bean id="school" class="org.example.Services.bao01.School">
+        <property name="name" value="北京大学"/>
+        <property name="address" value="$$$$$$"/>
+    </bean>
+
+
+</beans>

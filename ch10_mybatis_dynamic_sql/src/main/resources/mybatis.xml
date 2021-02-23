@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="jdbc.properties"/>
+
+    <!--控制mybatis全局行为-->
+    <settings>
+        <!--设置mybatis输出日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!--定义别名-->
+    <typeAliases>
+<!--        指定一个类型子定义别名
+        type自定义类型的全限定名称
+        alias别名-->
+        <typeAlias type="com.example.bean.Student" alias="stu"/>
+        <!--使用package，name是包名，包中类名就是别名，不区分大小写-->
+        <package name="com.example.bean"/>
+
+    </typeAliases>
+
+<!--    配置插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
+
+
+    <environments default="mydev">
+        <environment id="mydev">
+<!--    transactionManager：mybatis提交事务，回顾事务的方式
+            type事务处理类型
+                1、JDBC：表示mybatis底层是调用JDBC中的connection对象的，commit，rollback
+                2、MANAGED：将mybatis的事务处理委托交给其他容器-->
+            <transactionManager type="JDBC"></transactionManager>
+<!--        数据源datasource，表示connection对象
+        type数据源类型
+            pooled使用连接池，mybatis会创建PooledDataSource类
+            upooled不使用连接池，每次执行sql语句，先创建链接，执行sql，再关闭连接
+                mybatis会创建一个UnPooledDataSource，管理Connection对象的使用-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--    第一种方式-->
+        <mapper resource="com/example/dao/StudentDao.xml"/>
+
+<!--    第二种方式，使用包名
+        name:xml文件(mapper文件)所在包名，该包中所有xml文件都能一次加载给mybatis
+        使用package要求：
+            1、mapper文件名称需要和接口名称相同，且区分大小写
+            2、mapper文件和dao接口须在同一目录-->
+
+    </mappers>
+
+
+</configuration>

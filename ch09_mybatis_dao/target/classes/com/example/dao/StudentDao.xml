@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.StudentDao">
+    <insert id="insertStudent">
+        insert into Student values(#{id},#{name},#{age})
+    </insert>
+<!--id:执行sql语句的唯一标识，mybatis根据这一id的值来查找需要执行的sql语句
+        可以自定义，但要求使用接口中的方法名称
+    resultType：结果类型，执行sql后得到的ResultSet，遍历可得到java对象的类型
+        值写的类型的全限定名称-->
+    <select id="selectStudents" resultType="stu">
+        select id,name,age from Student order by id desc
+    </select>
+
+    <select id="selectMutipleParam" resultType="com.example.bean.Student">
+        select * from Student where name = #{myname} or age = #{myage}
+    </select>
+
+<!--    使用resultMap
+    1、定义resultMap  id：自定义名称，表示所定义的resultMap  type：Java类型的全限定名称
+    2、在select标签，使用resultMap来引用上边所定义的-->
+    <resultMap id="studentMap" type="com.example.bean.Student">
+<!--    列名与Java属性的关系
+        主键列，使用id标签
+        column列名  property：java类型属性名 -->
+        <id column="id" property="id"/>
+<!--    非主键列，使用result-->
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+    </resultMap>
+    <select id="selectAllStudents" resultMap="studentMap">
+        select * from Student
+    </select>
+
+
+<!--列名与属性名不同-->
+    <resultMap id="myStudentMap" type="com.example.bean.MyStudent">
+        <!--    列名与Java属性的关系
+                主键列，使用id标签
+                column列名  property：java类型属性名 -->
+        <id column="id" property="stu_id"/>
+        <!--    非主键列，使用result-->
+        <result column="name" property="stu_name"/>
+        <result column="age" property="stu_age"/>
+    </resultMap>
+    <select id="selectMyStudent" resultMap="myStudentMap">
+        select * from Student
+    </select>
+
+    <!--列名与属性名不同  另一种方法
+    resultType默认原则：同名的列值赋给同名的属性，使用列别名(即java对象的属性名)-->
+    <select id="selectMyStudentAnother" resultType="com.example.bean.MyStudent">
+        select id as stu_id, name as stu_name, age as stu_age from Student
+    </select>
+
+</mapper>

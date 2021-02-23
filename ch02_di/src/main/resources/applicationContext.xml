@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--申明组件扫描器,组件就是java对象
+    工作方式：spring会扫描遍历base-package指定的包，将包中和子包中所有的类，
+    按注解的功能创建对象，或给属性赋值-->
+<!--    <context:component-scan base-package="com.example.ba01"/>-->
+<!--    <context:component-scan base-package="com.example.ba02"/>-->
+<!--指定多个包的方式
+    1、使用多次组件扫描器
+    2、使用分隔符（；或，），分隔多个包名
+    3、指定父包
+-->
+<!--    <context:component-scan base-package="com.example.ba03"/>-->
+<!--    <context:component-scan base-package="com.example.ba04"/>-->
+    <context:component-scan base-package="com.example.ba05"/>
+</beans>
